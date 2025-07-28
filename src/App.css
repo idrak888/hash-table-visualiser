@@ -1,38 +1,113 @@
 .App {
-  text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Controls {
+	padding: 50px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Controls .col {
+	padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.Controls div label {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	margin: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Controls input {
+	background-color: transparent;
+	border: 1px solid rgb(48, 99, 183);
+	color: white;
+}
+
+.Controls .ButtonWrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.ButtonWrapper button {
+	width: 100%;
+	background-color: rgb(47, 0, 255);
+	border-radius: 2px;
+	border: 1px solid rgb(47, 0, 255);
+	color: white;
+	padding: 10px;
+	margin: 10px;
+	cursor: pointer;
+}
+
+.HashTableWrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.HashTableWrapper .StringEntries {
+	padding: 20px;
+}
+
+.HashTableWrapper .Hashtable {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.HashTableWrapper .col {
+	margin: 10px;
+	padding: 20px;
+	height: 50vh;
+}
+
+.col .hash-entry {
+	display: block;
+	padding: 5px;
+	border: 1px solid white;
+	border-radius: 5px;
+	margin-top: 10px;
+}
+
+.col .linkedlist-entry {
+	display: inline-block;
+	padding: 5px 10px;
+	border: 1px solid rgba(255, 255, 255, 0.6);
+	margin-top: 8px;
+}
+
+.entry .key {
+	color: aqua;
+}
+
+.entry .value {
+	color: rgb(234, 0, 255);
+}
+
+.Keys {
+	color: aqua;
+}
+
+.Entries {
+	color: rgb(234, 0, 255);
 }
