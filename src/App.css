@@ -1,27 +1,58 @@
+:root {
+	--primary: #4e54c8;
+	--primary-light: #6c63ff;
+	--accent: #00ffcc;
+	--text: #f0f2f5;
+	--dark: #131419;
+	--darker: #0a0a0e;
+	--border-radius: 8px;
+	--box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	--transition: all 0.3s ease;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	background-color: var(--darker);
+	color: var(--text);
+	min-height: 100vh;
+	line-height: 1.6;
+}
+
 .App {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	min-height: 100vh;
 }
 
 .container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 20px;
+	padding: 30px;
+	max-width: 1200px;
+	width: 100%;
 }
 
 .Controls {
-	padding: 50px;
+	padding: 30px;
 	width: 100%;
+	max-width: 300px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	background-color: var(--dark);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+	margin-bottom: 30px;
 }
 
 .Controls .col {
-	padding: 20px;
+	padding: 15px;
+	flex: 1;
 }
 
 .Controls div label {
@@ -29,14 +60,25 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	width: 100%;
-	margin: 10px;
+	margin: 12px 0;
+	font-weight: 500;
+	width: 250px;
 }
 
 .Controls input {
-	background-color: transparent;
-	border: 1px solid rgb(48, 99, 183);
-	color: white;
+	background-color: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(108, 99, 255, 0.5);
+	color: var(--text);
+	padding: 10px 14px;
+	border-radius: var(--border-radius);
+	transition: var(--transition);
+	width: 150px;
+}
+
+.Controls input:focus {
+	border-color: var(--primary-light);
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
 }
 
 .Controls .ButtonWrapper {
@@ -44,70 +86,157 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	margin-top: 15px;
 }
 
 .ButtonWrapper button {
 	width: 100%;
-	background-color: rgb(47, 0, 255);
-	border-radius: 2px;
-	border: 1px solid rgb(47, 0, 255);
+	background-color: var(--primary);
+	border-radius: var(--border-radius);
+	border: none;
 	color: white;
-	padding: 10px;
-	margin: 10px;
+	padding: 12px 20px;
+	margin: 8px;
 	cursor: pointer;
+	transition: var(--transition);
+	font-weight: 600;
+	letter-spacing: 0.5px;
+}
+
+.ButtonWrapper button:hover {
+	background-color: var(--primary-light);
+	transform: translateY(-2px);
+	box-shadow: 0 5px 15px rgba(78, 84, 200, 0.4);
 }
 
 .HashTableWrapper {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
+	width: 100%;
 }
 
 .HashTableWrapper .StringEntries {
 	padding: 20px;
+	background-color: var(--dark);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+	margin-right: 20px;
+	overflow: scroll;
+	max-width: 300px;
 }
 
 .HashTableWrapper .Hashtable {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
+	flex-wrap: wrap;
+	background-color: var(--dark);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+	padding: 15px;
 }
 
 .HashTableWrapper .col {
 	margin: 10px;
 	padding: 20px;
-	height: 50vh;
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: var(--border-radius);
+	scroll-behavior: smooth;
 }
 
 .col .hash-entry {
 	display: block;
-	padding: 5px;
-	border: 1px solid white;
-	border-radius: 5px;
-	margin-top: 10px;
+	padding: 10px 15px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: var(--border-radius);
+	margin-top: 12px;
+	background-color: rgba(255, 255, 255, 0.05);
+	transition: var(--transition);
+}
+
+.col .hash-entry, .col .linkedlist-entry {
+	font-size: 11px;
+}
+
+.col .hash-entry:hover {
+	transform: translateY(-2px);
+	border-color: rgba(255, 255, 255, 0.3);
 }
 
 .col .linkedlist-entry {
 	display: inline-block;
-	padding: 5px 10px;
-	border: 1px solid rgba(255, 255, 255, 0.6);
+	padding: 8px 14px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: var(--border-radius);
 	margin-top: 8px;
+	margin-right: 5px;
+	background-color: rgba(255, 255, 255, 0.05);
+	transition: var(--transition);
+}
+
+.col .grouped {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	margin-top: 8px;
+	padding: 5px;
+}
+
+.col .linkedlist-entry:hover {
+	border-color: rgba(255, 255, 255, 0.4);
 }
 
 .entry .key {
-	color: aqua;
+	color: var(--accent);
+	font-weight: 600;
 }
 
 .entry .value {
-	color: rgb(234, 0, 255);
+	color: var(--primary-light);
+	font-weight: 500;
 }
 
 .Keys {
-	color: aqua;
+	color: var(--accent);
+	font-weight: bold;
 }
 
 .Entries {
-	color: rgb(234, 0, 255);
+	color: var(--primary-light);
+	font-weight: bold;
+	width: 300px;
+	overflow-x: scroll;
+}
+
+.Controls select {
+	background-color: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(108, 99, 255, 0.5);
+	color: var(--text);
+	padding: 10px 14px;
+	border-radius: var(--border-radius);
+	transition: var(--transition);
+	width: 150px;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23f0f2f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	cursor: pointer;
+}
+
+.Controls select:focus {
+	border-color: var(--primary-light);
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+}
+
+.Controls select option {
+	background-color: var(--dark);
+	color: var(--text);
+	padding: 10px;
 }

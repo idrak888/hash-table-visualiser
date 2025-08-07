@@ -1,25 +1,7 @@
-import React, { useRef } from "react";
 import Xarrow from "react-xarrows";
 import '../App.css';
 
-const HashTableWrapper = () => {
-    const entries = [
-        { key: 'name', value: 'John Doe', hash: 1234 },
-        { key: 'age', value: '30', hash: 5678 },
-        { key: 'height', value: '175', hash: 5678 },
-        { key: 'weight', value: '70', hash: 5678 },
-        { key: 'email', value: 'john.doe@example.com', hash: 9012 },
-        { key: 'phone', value: '5465122298', hash: 9012 },
-    ];
-
-    const groupedEntries = entries.reduce((acc, entry) => {
-        if (!acc[entry.hash]) {
-            acc[entry.hash] = [];
-        }
-        acc[entry.hash].push(entry);
-        return acc;
-    }, {});
-
+const HashTableWrapper = ({ entries, groupedEntries }) => {
     return (
         <div className='HashTableWrapper'>
             <div className='StringEntries'>
@@ -58,13 +40,12 @@ const HashTableWrapper = () => {
                     <h4>Entries</h4>
                     <div className='linkedlist'>
                         {Object.keys(groupedEntries).map((hash, index) => (
-                            <div key={index} id={`${hash}${index}`}> 
+                            <div className="grouped" key={index} id={`${hash}${index}`}> 
                                 {groupedEntries[hash].map((entry, subIndex) => (
                                     <>
                                         <div key={subIndex} className='linkedlist-entry'>
                                             {entry.key}: {entry.value}
                                         </div>
-                                        {subIndex < groupedEntries[hash].length - 1 && ' -> '}
                                     </>
                                 ))}
                             </div>

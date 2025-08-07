@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
 import '../App.css';
 
-const Controls = () => {
+const Controls = ({ onAdd, onRemove }) => {
     const [key, setKey] = useState('');
     const [value, setValue] = useState('');
+    const [hashFunction, setHashFunction] = useState('Division Method');
 
     const handleAdd = () => {
-        // Add your logic here
-        console.log(`Add: ${key} - ${value}`);
+        if (key && value) {
+            onAdd(key, value, hashFunction);
+            setKey('');
+            setValue('');
+        }
     };
 
     const handleRemove = () => {
-        // Add your logic here
-        console.log(`Remove: ${key}`);
+        if (key) {
+            onRemove(key, hashFunction);
+            setKey('');
+        }
     };
 
     return (
@@ -42,14 +48,17 @@ const Controls = () => {
                 </div>
                 <label>
                     Hash Function:
-                    <select>
+                    <select 
+                        value={hashFunction}
+                        onChange={(e) => setHashFunction(e.target.value)}
+                    >
                         <option value="Division Method">Division Method</option>
                         <option value="Multiplication Method">Multiplication Method</option>
                     </select>
                 </label>
                 <div className='ButtonWrapper'>
                     <button onClick={handleAdd}>Add</button>
-                    <button onClick={handleRemove}>Remove</button>
+                    <button disabled={true} style={{ cursor: 'not-allowed', opacity: 0.5 }} onClick={handleRemove}>Remove</button>
                 </div>
             </div>
         </div>
